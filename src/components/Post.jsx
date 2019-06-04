@@ -4,26 +4,25 @@ import PropTypes from 'prop-types';
 
 class Post extends Component {
     render() {
-        const { 
-            userId,
-            id,
-            title,
-            body
-        } = this.props
+        const { post } = this.props
         return (
-            <div>
-               <h4>{title}</h4>
-               <p>{body}</p>
-               <p>User: {userId}</p>
-               <p>id: {id}</p>
+            <div className="post">
+               <a href="/" onClick={this.onClick}><h4>{post.title}</h4></a>
+               <p className="post-body">{post.body}</p>
+               <p>User: {post.userId}</p>
+               <p>id: {post.id}</p>
             </div>
         )
     }
+    onClick = () => {
+        console.log('ururkkww')
+    }
 }
 
+
+
 Post.propTypes = {
-    title: PropTypes.string.isRequired,
-    body: PropTypes.string.isRequired
+    post: PropTypes.object.isRequired
 }
 
 export default Post;
