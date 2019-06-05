@@ -48,6 +48,12 @@ main {
   margin-top: 5px;
 }
 
+.fa-times {
+  cursor: pointer;
+  float: right;
+  color: tomato;
+}
+
 .post-body {
   width: 95%;
   margin: auto;
