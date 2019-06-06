@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import {Consumer} from '../context';
-import uuid from 'uuid';
+import axios from 'axios'
+import AddInputGroup from './AddInputGroup';
 
 class AddPost extends Component {
     state = {
         title: '',
-        body: ''
+        body: '',
+        errors: {}
     }
+    
     render() {
-        const { title, body } = this.state;
+        const { title, body, errors } = this.state;
 
         return (
             <Consumer>
@@ -19,11 +22,21 @@ class AddPost extends Component {
                         <div className="post-header">Add Post</div>
                         <div className='post-body'>
                             <form onSubmit={this.onSubmit.bind(this, dispatch)}>
-                                <input type='text' name='title' className='' placeholder='Enter Heading' value={title}
-                                onChange={this.onChange}/>
-                                <input type='text-area' name='body' className='' placeholder='Enter Post' value={body}
-                                onChange={this.onChange}/>
-                                <input type='submit' value='Add New Post' className='add-btn' />
+                              <AddInputGroup 
+                                name="title"
+                                placeholder='Enter Titled'
+                                value={title}
+                                onChange={this.onChange}
+                                error={errors.title}
+                              /> 
+                              <AddInputGroup 
+                                name="body"
+                                placeholder='Enter Post'
+                                value={body}
+                                onChange={this.onChange}
+                                error={errors.body}
+                              />
+                                <input type='submit' value='Add New Post' className='add-btn' />  
                             </form>
                         </div>
                     </div>
@@ -32,26 +45,39 @@ class AddPost extends Component {
             </Consumer>
         )
     }
+
     onChange = (e) => {
         this.setState({[e.target.name]: e.target.value})
     }
+
     onSubmit = (dispatch, e) => {
         e.preventDefault();
-
+       
         const { title, body } = this.state;
+        if (title === '') {
+            this.setState({errors: { title: 'Please, enter title'}});
+            return;
+        }
 
+        if (body === '') {
+            this.setState({errors: { body: 'Please, enter post'}});
+            return;
+        }
         const newPost = {
-          id: uuid(),
           title,
           body  
         }
-        dispatch({type: 'ADD_POST', payload: newPost})
-        
+
+        axios.post('https://jsonplaceholder.typicode.com/posts', newPost).then(res => dispatch({type: 'ADD_POST', payload: res.data}))
+
         this.setState({
             title: '',
             body: '',
-            id: ''
-        })
+            id: '',
+            errors: {}
+        });
+
+        this.props.history.push('/');
     }
 }
 
