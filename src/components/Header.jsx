@@ -1,8 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom'
-
-
 
 const Header = () => {
     return (
@@ -11,24 +8,28 @@ const Header = () => {
             <a href="/" className="brand">Post List</a>
             <ul>
                 <li className="item">
-                    <Link to='/add-post' className="link">
-                        <i className="fas fa-plus"/>
+                    <Link to='/add-post' className="link tooltip">
+                        <i className="fas fa-plus" />
+                        <span className="tooltiptext">Add New Post</span>
                     </Link>
                 </li>
                 <li className="item">
-                    <button className="link">
+                    <a href='/' className="link tooltip">
                         <i className="far fa-thumbs-up" />
-                    </button>
+                        <span className="tooltiptext">sort by likes</span>
+                    </a>
                 </li>
                 <li className="item">
-                    <button className="link">
+                    <a href='/'  className="link tooltip">
                         <i className="far fa-thumbs-down" />
-                    </button>
+                        <span className="tooltiptext">sort by dislikes</span>
+                    </a>
                 </li>
                 <li className="item"> 
-                    <button className="link">
+                    <a href='/' className="link tooltip">
                         <i className="fas fa-sort-alpha-down" />
-                    </button>
+                        <span className="tooltiptext">sort alphabetically</span>
+                    </a>
                 </li>
               
             </ul>

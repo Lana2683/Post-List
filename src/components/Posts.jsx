@@ -1,35 +1,36 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import Post from './Post';
-// import PostPage from './PostPage'
-import { Consumer } from '../context'
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { getPosts } from '../actions/postActions'
 
-class Posts extends Component {
+
+class Posts extends PureComponent {
+    componentDidMount() {
+        this.props.getPosts();
+    }
     render() {
-        return (
-            <Consumer>
-                {value => {
-                    const { posts } = value;
-                    return (
-                        <>
-                        {posts.map(post => (
-                            <Post 
-                                key={post.id}
-                                post={post}
-                            />
-                        ))}
-                        {/* {posts.map(post => (
-                            <PostPage 
-                                key={post.id}
-                                post={post}
-                            />
-                        ))} */}
-                        </> 
-                    )
-                }}
-            </Consumer>
+        const { posts } = this.props;
+        return (   
+            <>
+            {posts.map(post => (
+                <Post
+                    key={post.id}
+                    post={post}
+                />
+            ))}
+            </>       
         )
-      
     }
 }
 
-export default Posts
+Posts.propTypes = {
+    posts: PropTypes.array.isRequired,
+    getPosts: PropTypes.func.isRequired
+}
+const mapStateToProps = (state) => ({
+    posts: state.post.posts
+})
+
+
+export default connect(mapStateToProps, {getPosts})(Posts)

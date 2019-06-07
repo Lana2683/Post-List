@@ -1,26 +1,27 @@
-import React, {Component} from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import Posts from './components/Posts';
+import React, { PureComponent } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from './components/Header';
-import AddPost from './components/AddPost'; 
-import Post from './components/Post'
-
-import { Provider } from './context'
-
+import Posts from './components/Posts';
+import PostInfo from './components/PostInfo';
+import AddPost from './components/AddPost';
+import EditPost from './components/EditPost'; 
+import { Provider } from 'react-redux';
+import store from './store'
 import './App.css';
 
-class App extends Component {
+class App extends PureComponent {
   render(){ 
     return (
-      <Provider>
+      <Provider store={store}>
         <Router>
         <div className="App">
         <Header />
         <main>
           <Switch>
             <Route exact path="/" component={Posts} />
+            <Route exact path="/post-info/:id" component={PostInfo} />
             <Route exact path="/add-post" component={AddPost} />
-            <Route exact path="/post-page" component={Post} />
+            <Route exact path="/edit-post/:id" component={EditPost} />
           </Switch>
         </main>
         </div>

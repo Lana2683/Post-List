@@ -1,23 +1,20 @@
 import React, { PureComponent } from 'react';
 import InputGroup from './InputGroup';
-import { connect } from 'react-redux';
-import { addPost } from '../actions/postActions';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { getPost, updatePost } from '../actions/postActions'
 
-class AddPost extends PureComponent {
+class EditPost extends PureComponent {
     state = {
         title: '',
         body: '',
         errors: {}
     }
-    
     render() {
         const { title, body, errors } = this.state;
         return (
-        <div className='post'>
-            <div className="post-header">
-                Add Post
-            </div>
+            <div className='post'>
+            <div className="post-header">Edit Post</div>
             <div className='post-body'>
                 <form onSubmit={this.onSubmit}>
                     <InputGroup 
@@ -34,10 +31,11 @@ class AddPost extends PureComponent {
                     onChange={this.onChange}
                     error={errors.body}
                     />
-                    <input type='submit' value='Add New Post' className='add-btn' />  
+                    <input type='submit' value='Edit Post' className='add-btn' />  
                 </form>
             </div>
         </div>
+                 
         )
     }
 
@@ -45,9 +43,21 @@ class AddPost extends PureComponent {
         this.setState({[e.target.name]: e.target.value})
     }
 
+    componentWillReceiveProps(nextProps, nextState){
+        const { title, body } = nextProps.post;
+        this.setState({
+            title,
+            body
+        });
+    }
+
+    componentDidMount() {
+        const { id } = this.props.match.params;
+        this.props.getPost(id);
+    }
+
     onSubmit = (e) => {
         e.preventDefault();
-       
         const { title, body } = this.state;
 
         if (title === '' || title.length > 100) {
@@ -60,12 +70,14 @@ class AddPost extends PureComponent {
             return;
         }
 
-        const newPost = {
-          title,
-          body  
+        const { id } = this.props.match.params;
+        const updPost = {
+            id,
+            title,
+            body
         }
-
-        this.props.addPost(newPost);
+        this.props.updatePost(updPost)
+       
         this.setState({
             title: '',
             body: '',
@@ -75,10 +87,16 @@ class AddPost extends PureComponent {
 
         this.props.history.push('/');
     }
+    
 }
 
-AddPost.propTypes = {
-    addPost: PropTypes.func.isRequired
+EditPost.propTypes = {
+    post: PropTypes.object.isRequired,
+    getPost: PropTypes.func.isRequired
 }
 
-export default connect(null, { addPost })(AddPost);
+const mapStateToProps = state => ({
+    post: state.post.post
+})
+
+export default connect(mapStateToProps, { getPost, updatePost })(EditPost);
