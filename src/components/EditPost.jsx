@@ -39,11 +39,7 @@ class EditPost extends PureComponent {
         )
     }
 
-    onChange = (e) => {
-        this.setState({[e.target.name]: e.target.value})
-    }
-
-    componentWillReceiveProps(nextProps, nextState){
+    componentWillReceiveProps(nextProps){
         const { title, body } = nextProps.post;
         this.setState({
             title,
@@ -60,12 +56,12 @@ class EditPost extends PureComponent {
         e.preventDefault();
         const { title, body } = this.state;
 
-        if (title === '' || title.length > 100) {
+        if (title === '') {
             this.setState({errors: { title: 'Please, enter title'}});
             return;
         }
 
-        if (body === '' || body.length > 400) {
+        if (body === '') {
             this.setState({errors: { body: 'Please, enter post'}});
             return;
         }
@@ -88,6 +84,9 @@ class EditPost extends PureComponent {
         this.props.history.push('/');
     }
     
+    onChange = (e) => {
+        this.setState({[e.target.name]: e.target.value})
+    }
 }
 
 EditPost.propTypes = {

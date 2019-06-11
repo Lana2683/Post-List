@@ -91,6 +91,7 @@ main {
 
 .icons {
   display: flex;
+  float: right;
 }
 
 .fa-pencil-alt {
@@ -100,10 +101,10 @@ main {
 }
 
 .post-body {
-  width: 95%;
+  /* width: 95%;
   margin: auto;
   border: 1px solid #e2e3e5;
-  border-radius: 2px;
+  border-radius: 2px; */
 }
 .valid {
   background-color:#d4edda;

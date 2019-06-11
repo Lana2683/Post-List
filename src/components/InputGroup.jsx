@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import classnames from 'classnames';
 
 
-const AddInputGroup = ({
+const InputGroup = ({
     name,
     error,
     value,
@@ -26,7 +26,7 @@ const AddInputGroup = ({
     )
 }
 
-AddInputGroup.propTypes = {
+InputGroup.propTypes = {
     title: PropTypes.string.isRequired,
     body: PropTypes.string.isRequired,
     placeholder: PropTypes.string.isRequired,
@@ -36,8 +36,8 @@ AddInputGroup.propTypes = {
     error: PropTypes.string.isRequired
 }
 
-AddInputGroup.defaultProps = {
+InputGroup.defaultProps = {
     type: 'text'
 }
 
-export default AddInputGroup
+export default InputGroup

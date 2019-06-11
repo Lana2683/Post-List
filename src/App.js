@@ -5,6 +5,7 @@ import Posts from './components/Posts';
 import PostInfo from './components/PostInfo';
 import AddPost from './components/AddPost';
 import EditPost from './components/EditPost'; 
+import Comments from './components/Comments';
 import { Provider } from 'react-redux';
 import store from './store'
 import './App.css';
@@ -21,7 +22,8 @@ class App extends PureComponent {
             <Route exact path="/" component={Posts} />
             <Route exact path="/post-info/:id" component={PostInfo} />
             <Route exact path="/add-post" component={AddPost} />
-            <Route exact path="/edit-post/:id" component={EditPost} />
+            <Route exact path="/post-info/edit-post/:id" component={EditPost} />
+            <Route exact path="/comments?postId=:postId" component={Comments} />
           </Switch>
         </main>
         </div>
