@@ -13,8 +13,24 @@ class PostInfo extends PureComponent {
         id: '',
         userId: ''
     }
+
+
+    componentWillReceiveProps(nextProps, nextState){
+        const { title, body } = nextProps.post;
+        this.setState({
+            title,
+            body
+        });
+    }
+    
+    componentDidMount(){
+        const { id } = this.props.match.params;
+        this.props.getPost(id);
+    }
+
     render() {
         const { id, userId, title, body } = this.state;
+
          return (
             <div className="post">
                 <div className="post-title">
@@ -39,19 +55,6 @@ class PostInfo extends PureComponent {
                   
         )
     }
-
-componentWillReceiveProps(nextProps){
-    const { title, body } = nextProps.post;
-    this.setState({
-        title,
-        body
-    });
-}
-
-componentDidMount() {
-    const { id } = this.props.match.params;
-    this.props.getPost(id);
-}
 
 onDeletePost = (id) => {
     this.props.deletePost(id)
