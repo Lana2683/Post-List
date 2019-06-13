@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { deletePost, getPost } from '../actions/postActions';
-import Comments from './Comments';
+import Comment from './Comment';
+import axios from 'axios';
 
 class PostInfo extends PureComponent {
     state = {
@@ -31,10 +32,7 @@ class PostInfo extends PureComponent {
                         <p>id: {id}</p>
                     </div>
                 <div className='comments'>
-                    <Link to={`/comments?postId=${userId}`}>
-                    <i className="far fa-comment"></i>
-                    </Link>
-                   {/* <Comments postId={userId}/> */}
+                   <Comment comments={comments}/>
                 </div>   
             </div>         
         )
@@ -49,6 +47,7 @@ componentWillReceiveProps(nextProps){
 }
 
 componentDidMount() {
+    axios.get(`https://jsonplaceholder.typicode.com/comments`).then(res => this.setState({comments: res.data}));
     const { id } = this.props.match.params;
     this.props.getPost(id);
 }

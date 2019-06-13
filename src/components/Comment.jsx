@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import React, {PureComponent} from 'react'
 // import PropTypes from 'prop-types';
 // import { Link } from 'react-router-dom'
 
@@ -8,7 +8,7 @@ import React, { PureComponent } from 'react'
 //     postId,
 //     email,
 //     body
-// }) => {    
+// }) => { 
 // return (
 // <div className="post">
 //                      <div className="post-title">
@@ -23,27 +23,27 @@ import React, { PureComponent } from 'react'
 //     )
 // }
 class Comment extends PureComponent {
-    // state = {
-    //     id: '',
-    //     body: '',
-    //     email: '',
-    //     postId: '',
-    //     name: '',
-    // }
+    state = {
+        id: '',
+        body: '',
+        email: '',
+        postId: '',
+        name: '',
+    }
     render() {
         const { id, postId, name, email, body} = this.props.comment;
-        const { dd } = this.props;
+        const { x } = this.props;
         return (
                 <div className="post">
                     <div className="post-title">
-                        <p>{dd}</p>
+                        {/* <p>{x}</p> */}
                         <p>{postId}</p>
                         <p>{name}</p>
-                        <p>{email}</p>
+                        {/* <p>{email}</p> */}
                         <p>{body}</p>
                     </div>    
                 </div>
-                
+             
         )
     }
 }
