@@ -11,8 +11,8 @@ class Posts extends PureComponent {
         return (   
             <>
             <div className='search'>
-                <input type="text" name="filter" id="filter" className='filter'/>
-                <label for="filter">&nbsp;Filter Posts</label>
+                <input type="text" name="filter" id="filter" className='filter' placeholder='Filter Posts'/>
+                {/* <label for="filter">&nbsp;Filter Posts</label> */}
             </div>
             {posts.map(post => (
                 <Post

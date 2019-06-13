@@ -28,7 +28,7 @@ const Header = () => {
                 <li className="item"> 
                     <a href='/' className="link tooltip">
                         <i className="fas fa-sort-alpha-down" />
-                        <span className="tooltiptext">sort alphabetically</span>
+                        <span className="tooltiptext">sort A-Z</span>
                     </a>
                 </li>
               
