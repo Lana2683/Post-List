@@ -4,7 +4,6 @@ import {
     DELETE_POST, 
     GET_POST, 
     UPDATE_POST,
-    FILTER_POSTS
 } from '../actions/types'
 
 const initialState = {
@@ -44,13 +43,7 @@ export default function(state = initialState, action) {
                 posts: state.posts.filter(post => 
                     post.id !== action.payload)
             }
-        case  FILTER_POSTS:
-            return {
-                ...state,
-                filteredPosts: state.posts.filter(post => 
-                post.body.indexOf(action.payload)!==-1
-                )
-}
+
         default:
             return state;
     }
