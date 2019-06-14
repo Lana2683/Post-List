@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 
-const InputGroup = ({
+const TextareaGroup = ({
     name,
     error,
     value,
@@ -26,7 +26,7 @@ const InputGroup = ({
     )
 }
 
-InputGroup.propTypes = {
+TextareaGroup.propTypes = {
     title: PropTypes.string.isRequired,
     body: PropTypes.string.isRequired,
     placeholder: PropTypes.string.isRequired,
@@ -36,8 +36,8 @@ InputGroup.propTypes = {
     error: PropTypes.string.isRequired
 }
 
-InputGroup.defaultProps = {
+TextareaGroup.defaultProps = {
     type: 'text'
 }
 
-export default InputGroup
+export default TextareaGroup 

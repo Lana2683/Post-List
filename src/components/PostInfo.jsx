@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { deletePost, getPost } from '../actions/postActions';
 import { getComments } from '../actions/commentAction'
 import Comment from './Comment';
-import InputGroup from './InputGroup';
+import TextareaGroup from './TextareaGroup';
 import { addComment } from '../actions/commentAction';
 
 class PostInfo extends PureComponent {
@@ -62,31 +62,31 @@ class PostInfo extends PureComponent {
                         this.setState({
                         showAddComment: !this.state.showAddComment
                         })} className='btn-add-cmmnt'>
-                    Add new comment
+                    Add New Comment
                     </button>
                 </span>
                 {showAddComment ? (
                 <div>
                     <form onSubmit={this.onSubmit}>
-                        <InputGroup 
+                        <TextareaGroup  
                         name="commentBody"
                         placeholder='Enter Comment'
                         value={commentBody}
                         onChange={this.onChange}
                         />
-                        <InputGroup 
+                        <TextareaGroup  
                         name="name"
                         placeholder='Enter Name'
                         value={name}
                         onChange={this.onChange}
                         /> 
-                        <InputGroup 
+                        <TextareaGroup  
                         name="email"
                         placeholder='Enter Email'
                         value={email}
                         onChange={this.onChange}
                         />
-                        <input type='submit' value='Add New Comment' className='add-btn' />  
+                        <input type='submit' value='Add' className='add-btn' />  
                     </form>
                 </div>
                 ) : null}
