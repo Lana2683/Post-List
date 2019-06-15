@@ -14,7 +14,7 @@ class Posts extends PureComponent {
     }
     render() {
         const { posts } = this.props;
-        const { searchText, showSortedPosts } = this.state;
+        const { searchText, showSortedPosts, like, dislike } = this.state;
         let filteredPosts = posts.filter(post => post.body.indexOf(searchText)!==-1 || post.title.indexOf(searchText)!==-1);
         let likedPosts = posts.filter(post => (post.like)?post:null)
         let dislikedPosts = posts.filter(post => (post.dislike)?post:null)
@@ -32,13 +32,19 @@ class Posts extends PureComponent {
                 <ul>       
                        <li className="item">
                            
-                    <span className="link tooltip">
+                    <span className="link tooltip" onClick={() =>
+                        this.setState({
+                        like: !this.state.like
+                        })} >
                         <i className="far fa-thumbs-up" />
                         <span className="tooltiptext">sort by likes</span>
                     </span>
                         </li>
                         <li className="item">
-                            <span className="link tooltip">
+                            <span className="link tooltip" onClick={() =>
+                        this.setState({
+                            dislike: !this.state.dislike
+                        })}>
                                 <i className="far fa-thumbs-down" />
                                 <span className="tooltiptext">sort by dislikes</span>
                             </span>
@@ -54,8 +60,30 @@ class Posts extends PureComponent {
                         </li>
                     </ul>
             </div>
-            {showSortedPosts ?
-            ( posts.sort((a, b) => {
+            {like ? (likedPosts.map(post => (
+                <Post  
+                    key={post.id}
+                    post={post}
+                    posts={posts}
+                    like={post.like}
+                    dislike={post.dislike}
+                    onClickLike={() => this.onClickLike(post.id)}
+                    onClickDisLike={() => this.onClickDisLike(post.id)}
+                />
+            ))): 
+            dislike ? (dislikedPosts.map(post => (
+                <Post  
+                    key={post.id}
+                    post={post}
+                    posts={posts}
+                    like={post.like}
+                    dislike={post.dislike}
+                    onClickLike={() => this.onClickLike(post.id)}
+                    onClickDisLike={() => this.onClickDisLike(post.id)}
+                />
+            ))):
+            showSortedPosts ?
+            (posts.sort((a, b) => {
                 let cmprs = 0;
                 if (a.title > b.title) {
                     cmprs = 1;
@@ -69,6 +97,11 @@ class Posts extends PureComponent {
                 <Post
                     key={post.id}
                     post={post}
+                    posts={posts}
+                    like={post.like}
+                    dislike={post.dislike}
+                    onClickLike={() => this.onClickLike(post.id)}
+                    onClickDisLike={() => this.onClickDisLike(post.id)}
                     />)))
                     :
             (filteredPosts.map(post => (
