@@ -53,4 +53,3 @@ export const updatePost = post => async dispatch => {
         payload: res.data
     });
 };
-

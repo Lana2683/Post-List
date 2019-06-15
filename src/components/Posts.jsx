@@ -9,11 +9,16 @@ class Posts extends PureComponent {
     state = {
         searchText: '',
         showSortedPosts: false,
+        like: false,
+        dislike: false    
     }
     render() {
         const { posts } = this.props;
         const { searchText, showSortedPosts } = this.state;
-        let filteredPosts = posts.filter(post => post.body.indexOf(searchText)!==-1 || post.title.indexOf(searchText)!==-1)
+        let filteredPosts = posts.filter(post => post.body.indexOf(searchText)!==-1 || post.title.indexOf(searchText)!==-1);
+        let likedPosts = posts.filter(post => (post.like)?post:null)
+        let dislikedPosts = posts.filter(post => (post.dislike)?post:null)
+        console.log(likedPosts, dislikedPosts)
         return (   
             <>
             <div className='navbar'>
@@ -62,18 +67,19 @@ class Posts extends PureComponent {
             }),
             posts.map(post => (
                 <Post
-                    like={post.like}
                     key={post.id}
                     post={post}
-                    title={post.title}
                     />)))
                     :
             (filteredPosts.map(post => (
-                <Post
+                <Post  
                     key={post.id}
                     post={post}
+                    posts={posts}
                     like={post.like}
-                    title={post.title}
+                    dislike={post.dislike}
+                    onClickLike={() => this.onClickLike(post.id)}
+                    onClickDisLike={() => this.onClickDisLike(post.id)}
                 />
             )))}
             </>       
@@ -87,6 +93,30 @@ getFilteredPosts = (e) => {
     this.setState({
         searchText: e.target.value
         })
+}
+
+onClickLike = (id) => {
+    const { posts } = this.props;
+    const f = posts.map(post => {
+        if(post.id === id){ 
+            post.like = !post.like;
+            post.dislike = false;
+            }
+            return post
+    })
+    this.setState({f})
+}
+
+onClickDisLike = (id) => {
+    const { posts } = this.props;
+    const s = posts.map(post => {
+        if(post.id === id){ 
+            post.dislike =  !post.dislike;
+            post.like = false
+            }
+            return post
+    })
+    this.setState({s})
 }
 }
 

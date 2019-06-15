@@ -42,8 +42,7 @@ export default function(state = initialState, action) {
                 ...state,
                 posts: state.posts.filter(post => 
                     post.id !== action.payload)
-            }
-
+            }   
         default:
             return state;
     }
