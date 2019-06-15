@@ -58,6 +58,16 @@ class AddPost extends PureComponent {
             return;
         }
 
+        if (title.length > 100) {
+            this.setState({errors: { title: 'Title is to long'}});
+            return;
+        }
+
+        if (body.length > 200) {
+            this.setState({errors: { body: 'Post is to long'}});
+            return;
+        }
+
         const newPost = {
           title,
           body  
