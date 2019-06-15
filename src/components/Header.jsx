@@ -13,24 +13,7 @@ const Header = () => {
                         <span className="tooltiptext">Add New Post</span>
                     </Link>
                 </li>
-                <li className="item">
-                    <a href='/' className="link tooltip">
-                        <i className="far fa-thumbs-up" />
-                        <span className="tooltiptext">sort by likes</span>
-                    </a>
-                </li>
-                <li className="item">
-                    <a href='/'  className="link tooltip">
-                        <i className="far fa-thumbs-down" />
-                        <span className="tooltiptext">sort by dislikes</span>
-                    </a>
-                </li>
-                <li className="item"> 
-                    <a href='/' className="link tooltip">
-                        <i className="fas fa-sort-alpha-down" />
-                        <span className="tooltiptext">sort A-Z</span>
-                    </a>
-                </li>
+                
               
             </ul>
             </nav>

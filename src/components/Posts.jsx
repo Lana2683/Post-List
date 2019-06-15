@@ -7,15 +7,16 @@ import { getPosts } from '../actions/postActions'
 
 class Posts extends PureComponent {
     state = {
-        searchText:''
+        searchText: '',
+        showSortedPosts: false,
     }
     render() {
         const { posts } = this.props;
-        const { searchText } = this.state;
-        let filteredPosts =  posts.filter(post => post.body.indexOf(searchText)!==-1 || post.title.indexOf(searchText)!==-1)
+        const { searchText, showSortedPosts } = this.state;
+        let filteredPosts = posts.filter(post => post.body.indexOf(searchText)!==-1 || post.title.indexOf(searchText)!==-1)
         return (   
             <>
-            <div className='search'>
+            <div className='navbar'>
                 <input type="text" 
                        name="filter" 
                        id="filter" 
@@ -23,14 +24,58 @@ class Posts extends PureComponent {
                        placeholder='Search Posts'
                        value={searchText}
                        onChange={this.getFilteredPosts} />
+                <ul>       
+                       <li className="item">
+                           
+                    <span className="link tooltip">
+                        <i className="far fa-thumbs-up" />
+                        <span className="tooltiptext">sort by likes</span>
+                    </span>
+                        </li>
+                        <li className="item">
+                            <span className="link tooltip">
+                                <i className="far fa-thumbs-down" />
+                                <span className="tooltiptext">sort by dislikes</span>
+                            </span>
+                        </li>
+                        <li className="item"> 
+                            <span  className="link tooltip" onClick={() =>
+                        this.setState({
+                        showSortedPosts: !this.state.showSortedPosts
+                        })} >
+                                <i className="fas fa-sort-alpha-down" />
+                                <span className="tooltiptext">sort A-Z</span>
+                            </span>
+                        </li>
+                    </ul>
             </div>
-            {
-            filteredPosts.map(post => (
+            {showSortedPosts ?
+            ( posts.sort((a, b) => {
+                let cmprs = 0;
+                if (a.title > b.title) {
+                    cmprs = 1;
+                } 
+                else {
+                    cmprs = -1;
+                }
+                return cmprs;
+            }),
+            posts.map(post => (
+                <Post
+                    like={post.like}
+                    key={post.id}
+                    post={post}
+                    title={post.title}
+                    />)))
+                    :
+            (filteredPosts.map(post => (
                 <Post
                     key={post.id}
                     post={post}
+                    like={post.like}
+                    title={post.title}
                 />
-            ))}
+            )))}
             </>       
         )
     }
@@ -40,7 +85,6 @@ componentDidMount() {
 
 getFilteredPosts = (e) => {
     this.setState({
-        showFilteredPosts: !this.state.showFilteredPosts, 
         searchText: e.target.value
         })
 }
