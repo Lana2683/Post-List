@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 
@@ -13,13 +13,13 @@ const InputGroup = ({
 }) => {    
     return (
         <div>
-        <input 
+        <textarea 
             type={type}
             name={name} 
-            className={classnames('valid', {'invalid': error})}
+            className={classnames('valid inp-group', {'invalid inp-group': error})}
             placeholder={placeholder}
             value={value}
-            onChange={onChange} 
+            onChange={onChange}
         />
         {error && <div>{error}</div>}
         </div>

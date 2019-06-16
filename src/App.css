@@ -1,3 +1,7 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+}  
+
 header {
   width: 100%;
   background-color: #d1ecf1;
@@ -26,11 +30,12 @@ ul{
 
 .item {
   padding: 5px 10px;
-  border: 1px solid #d6d8db;;
+  border: 1px solid #d6d8db;
   border-radius: 4px;
   background-color:white; 
   list-style-type: none; 
   margin-right: 10px; 
+  cursor: pointer;
 }
 
 .link {
@@ -70,12 +75,25 @@ main {
   margin: auto;
 }
 
+.post-info {
+  padding: 10px;
+  border: 1px solid #e2e3e5;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
 .post {
   padding: 10px;
   border: 1px solid #e2e3e5;
   border-radius: 2px;
   margin-bottom: 5px;
   margin-top: 5px;
+}
+
+.post-header {
+  color: #343a40;
+  font-size: 18px;
+  margin-top: 10px;
 }
 
 .post-title {
@@ -85,20 +103,36 @@ main {
   cursor: pointer;
 }
 
+.post-link {
+  color: #0ebeff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
 .post:hover {
   background-color: #e2e3e5;
 }
 
 .icons {
-  display: flex;
+  /* display: flex; */
   float: right;
+  margin-top: 10px
 }
 
-.fa-pencil-alt {
-  cursor: pointer;
-  margin-right: 10px;
-  color: #343a40;
+.btn-add-cmmnt {
+  height: 30px;
+  width: 157px;
+  background-color: #d1ecf1;
+  border-radius:  4px;
+  border: 1px solid #17a2b8;
 }
+
+.cmmnt{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 
 .post-body {
   /* width: 95%;
@@ -107,9 +141,45 @@ main {
   border-radius: 2px; */
 }
 .valid {
-  background-color:#d4edda;
+  background-color: white;
 }
 
 .invalid {
   background-color: #f8d7da;
+}
+
+.enabled {
+  background-color:#17a2b8;
+}
+
+.search{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.inp-group {
+  padding: 5px 10px;
+  border: 1px solid #6c757d;
+  border-radius: 4px;
+  margin-top: 10px;
+  width: 95%;
+  font-size: 15px;
+}
+
+.add-btn {
+  height: 30px;
+  width: 157px;
+  background-color: #d1ecf1;
+  border-radius:  4px;
+  border: 1px solid #17a2b8;
+  margin: 10px 0px;
+}
+
+.filter {
+  outline: none;
+  border: 0;
+  border-bottom: 2px solid #0ebeff;
+  width: 100%;
+  font-size: 18px;
+  margin: 10px 0px;
 }

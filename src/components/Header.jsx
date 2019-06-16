@@ -9,7 +9,7 @@ const Header = () => {
             <ul>
                 <li className="item">
                     <Link to='/add-post' className="link tooltip">
-                        <i className="fas fa-plus" />
+                        <i className="fas fa-plus" />&nbsp;New Post
                         <span className="tooltiptext">Add New Post</span>
                     </Link>
                 </li>
@@ -28,7 +28,7 @@ const Header = () => {
                 <li className="item"> 
                     <a href='/' className="link tooltip">
                         <i className="fas fa-sort-alpha-down" />
-                        <span className="tooltiptext">sort alphabetically</span>
+                        <span className="tooltiptext">sort A-Z</span>
                     </a>
                 </li>
               

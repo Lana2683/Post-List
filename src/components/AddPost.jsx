@@ -14,11 +14,10 @@ class AddPost extends PureComponent {
     render() {
         const { title, body, errors } = this.state;
         return (
-        <div className='post'>
-            <div className="post-header">
-                Add Post
-            </div>
             <div className='post-body'>
+                <div className="post-header">
+                    Add Post
+                </div>
                 <form onSubmit={this.onSubmit}>
                     <InputGroup 
                     name="title"
@@ -37,7 +36,6 @@ class AddPost extends PureComponent {
                     <input type='submit' value='Add New Post' className='add-btn' />  
                 </form>
             </div>
-        </div>
         )
     }
 
@@ -50,12 +48,12 @@ class AddPost extends PureComponent {
        
         const { title, body } = this.state;
 
-        if (title === '' || title.length > 100) {
+        if (title === '') {
             this.setState({errors: { title: 'Please, enter title'}});
             return;
         }
 
-        if (body === '' || body.length > 400) {
+        if (body === '' ) {
             this.setState({errors: { body: 'Please, enter post'}});
             return;
         }
@@ -69,7 +67,6 @@ class AddPost extends PureComponent {
         this.setState({
             title: '',
             body: '',
-            id: '',
             errors: {}
         });
 

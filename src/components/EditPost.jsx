@@ -13,9 +13,10 @@ class EditPost extends PureComponent {
     render() {
         const { title, body, errors } = this.state;
         return (
-            <div className='post'>
-            <div className="post-header">Edit Post</div>
             <div className='post-body'>
+                <div className="post-header">
+                    Edit Post
+                </div>
                 <form onSubmit={this.onSubmit}>
                     <InputGroup 
                     name="title"
@@ -34,7 +35,7 @@ class EditPost extends PureComponent {
                     <input type='submit' value='Edit Post' className='add-btn' />  
                 </form>
             </div>
-        </div>
+        // </div>
                  
         )
     }
