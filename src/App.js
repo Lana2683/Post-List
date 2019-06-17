@@ -15,15 +15,15 @@ class App extends PureComponent {
       <Provider store={store}>
         <Router>
         <div className="App">
-        <Header />
-        <main>
-          <Switch>
-            <Route exact path="/" component={Posts} />
-            <Route exact path="/post-info/:id" component={PostInfo} />
-            <Route exact path="/add-post" component={AddPost} />
-            <Route exact path="/post-info/edit-post/:id" component={EditPost} />
-          </Switch>
-        </main>
+          <Header />
+          <main>
+            <Switch>
+              <Route exact path="/" component={Posts} />
+              <Route exact path="/post-info/:id" component={PostInfo} />
+              <Route exact path="/add-post" component={AddPost} />
+              <Route exact path="/post-info/edit-post/:id" component={EditPost} />
+            </Switch>
+          </main>
         </div>
         </Router>
       </Provider>
