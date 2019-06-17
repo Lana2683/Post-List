@@ -1,11 +1,10 @@
 import React, { PureComponent } from 'react';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { deletePost, getPost } from '../actions/postActions';
 import { getComments } from '../actions/commentAction'
 import Comment from './Comment';
-import InputGroup from './InputGroup';
+import TextareaGroup from './TextareaGroup';
 import { addComment } from '../actions/commentAction';
 
 class PostInfo extends PureComponent {
@@ -33,8 +32,9 @@ class PostInfo extends PureComponent {
                 <Link to={`edit-post/${id}`} className='item link'>
                    Edit Post
                 </Link>
-                <span className='item'>
+                <span className='item tooltip'>
                     <i className="far fa-trash-alt" onClick={this.onDeletePost.bind(this, id)} />
+                    <span className="tooltiptext">Delete Post</span>
                 </span>
             </div>
             <br/>
@@ -44,12 +44,14 @@ class PostInfo extends PureComponent {
                 <p>Author: {userId}</p>
             </div>
             <span>
-                <i className={like ? 'enabled far fa-thumbs-up item' : 'far fa-thumbs-up item'} onClick={() =>
+                <i className={like ? 'enabled far fa-thumbs-up item' :
+                        'far fa-thumbs-up item'} onClick={() =>
                         this.setState({
                         like: !this.state.like,
                         dislike: false
                         })} />
-                <i className={dislike ? 'enabled far fa-thumbs-down item' : 'far fa-thumbs-down item'} onClick={() =>
+                <i className={dislike ? 'enabled far fa-thumbs-down item' : 
+                        'far fa-thumbs-down item'} onClick={() =>
                         this.setState({
                             dislike: !this.state.dislike,
                             like: false
@@ -62,25 +64,25 @@ class PostInfo extends PureComponent {
                         this.setState({
                         showAddComment: !this.state.showAddComment
                         })} className='btn-add-cmmnt'>
-                    Add new comment
+                    Add New Comment
                     </button>
                 </span>
                 {showAddComment ? (
                 <div>
                     <form onSubmit={this.onSubmit}>
-                        <InputGroup 
+                        <TextareaGroup  
                         name="commentBody"
                         placeholder='Enter Comment'
                         value={commentBody}
                         onChange={this.onChange}
                         />
-                        <InputGroup 
+                        <TextareaGroup  
                         name="name"
                         placeholder='Enter Name'
                         value={name}
                         onChange={this.onChange}
                         /> 
-                        <InputGroup 
+                        <TextareaGroup  
                         name="email"
                         placeholder='Enter Email'
                         value={email}
@@ -145,18 +147,11 @@ onDeletePost = id => {
     this.props.deletePost(id);
     this.props.history.push('/');
 }
-
 }
 
 const mapStateToProps = state => ({
     post: state.post.post,
     comments: state.comment.comments
 });
-
-
-PostInfo.propTypes = {
-    deletePost: PropTypes.func.isRequired
-}
-
 
 export default connect(mapStateToProps,  {deletePost, getPost, addComment, getComments})(PostInfo);

@@ -6,4 +6,3 @@ export default combineReducers({
     post: postReducer,
     comment: commentReduser
 });
-

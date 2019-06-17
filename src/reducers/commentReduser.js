@@ -1,7 +1,7 @@
 import { 
     GET_COMMENTS,
     ADD_COMMENT
-         } from '../actions/types';
+} from '../actions/types';
 
 const initialState = {
     comments: [],
@@ -24,3 +24,4 @@ export default function(state = initialState, action) {
             return state;
         }
     }
+    

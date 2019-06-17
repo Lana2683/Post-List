@@ -21,10 +21,10 @@ nav {
   text-decoration: none;
   color: #343a40;
   font-weight: bolder;
-  font-size: 18px;
+  font-size: 20px;
 }
 
-ul{ 
+ul { 
   display: flex;
 }
 
@@ -92,7 +92,7 @@ main {
 
 .post-header {
   color: #343a40;
-  font-size: 18px;
+  font-size: 20px;
   margin-top: 10px;
 }
 
@@ -107,6 +107,7 @@ main {
   color: #0ebeff;
   text-decoration: none;
   font-weight: bold;
+  font-size: 18px;
 }
 
 .post:hover {
@@ -114,7 +115,6 @@ main {
 }
 
 .icons {
-  /* display: flex; */
   float: right;
   margin-top: 10px
 }
@@ -133,13 +133,6 @@ main {
   align-items: center;
 }
 
-
-.post-body {
-  /* width: 95%;
-  margin: auto;
-  border: 1px solid #e2e3e5;
-  border-radius: 2px; */
-}
 .valid {
   background-color: white;
 }
@@ -152,7 +145,7 @@ main {
   background-color:#17a2b8;
 }
 
-.search{
+.search {
   margin-top: 10px;
   margin-bottom: 10px;
 }
@@ -179,7 +172,12 @@ main {
   outline: none;
   border: 0;
   border-bottom: 2px solid #0ebeff;
-  width: 100%;
+  width: 50%;
   font-size: 18px;
   margin: 10px 0px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
 }

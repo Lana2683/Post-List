@@ -3,12 +3,14 @@ import {
     ADD_POST, 
     DELETE_POST, 
     GET_POST, 
-    UPDATE_POST
+    UPDATE_POST,
 } from '../actions/types'
 
 const initialState = {
     posts: [],
     post: {},
+    filteredPosts: [],
+    searchText: ''
 };
 
 export default function(state = initialState, action) {
@@ -40,7 +42,7 @@ export default function(state = initialState, action) {
                 ...state,
                 posts: state.posts.filter(post => 
                     post.id !== action.payload)
-            }  
+            }   
         default:
             return state;
     }

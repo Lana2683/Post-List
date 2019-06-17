@@ -1,17 +1,10 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-
 class Post extends PureComponent {
-    state = {
-        like: false,
-        dislike: false
-    }
     render() {
-        const { id, title, body } = this.props.post;
-        const { like, dislike } = this.state;
-     
+        const { id, title, body, like, dislike } = this.props.post;
+        const { onClickLike, onClickDisLike }=this.props
             return (
                 <div className="post">
                     <div className="post-title">
@@ -20,24 +13,13 @@ class Post extends PureComponent {
                         </Link>
                     </div>  
                     <p>{body}</p> 
-                    <i className={like ? 'enabled far fa-thumbs-up item' : 'far fa-thumbs-up item'} onClick={() =>
-                        this.setState({
-                        like: !this.state.like,
-                        dislike: false
-                        })}/>
-                    <i className={dislike ? 'enabled far fa-thumbs-down item' : 'far fa-thumbs-down item'} onClick={() =>
-                        this.setState({
-                            dislike: !this.state.dislike,
-                            like: false
-                        })}/>
-                </div>
-                
+                    <i className={like ? 'enabled far fa-thumbs-up item' :
+                         'far fa-thumbs-up item'} onClick={()=>onClickLike(id)}/>
+                    <i className={dislike ? 'enabled far fa-thumbs-down item' :
+                         'far fa-thumbs-down item'} onClick={()=>onClickDisLike(id)}/>
+                </div>      
         )
     }
-}
-
-Post.propTypes = {
-    post: PropTypes.object.isRequired
 }
 
 export default Post;

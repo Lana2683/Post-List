@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
-import InputGroup from './InputGroup';
-import PropTypes from 'prop-types';
+import TextareaGroup  from './TextareaGroup';
 import { connect } from 'react-redux';
 import { getPost, updatePost } from '../actions/postActions'
 
@@ -18,14 +17,14 @@ class EditPost extends PureComponent {
                     Edit Post
                 </div>
                 <form onSubmit={this.onSubmit}>
-                    <InputGroup 
+                    <TextareaGroup 
                     name="title"
                     placeholder='Enter Titled'
                     value={title}
                     onChange={this.onChange}
                     error={errors.title}
                     /> 
-                    <InputGroup 
+                    <TextareaGroup  
                     name="body"
                     placeholder='Enter Post'
                     value={body}
@@ -34,9 +33,7 @@ class EditPost extends PureComponent {
                     />
                     <input type='submit' value='Edit Post' className='add-btn' />  
                 </form>
-            </div>
-        // </div>
-                 
+            </div>  
         )
     }
 
@@ -88,11 +85,6 @@ class EditPost extends PureComponent {
     onChange = (e) => {
         this.setState({[e.target.name]: e.target.value})
     }
-}
-
-EditPost.propTypes = {
-    post: PropTypes.object.isRequired,
-    getPost: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({

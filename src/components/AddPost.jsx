@@ -1,8 +1,7 @@
 import React, { PureComponent } from 'react';
-import InputGroup from './InputGroup';
+import TextareaGroup from './TextareaGroup';
 import { connect } from 'react-redux';
 import { addPost } from '../actions/postActions';
-import PropTypes from 'prop-types';
 
 class AddPost extends PureComponent {
     state = {
@@ -19,14 +18,14 @@ class AddPost extends PureComponent {
                     Add Post
                 </div>
                 <form onSubmit={this.onSubmit}>
-                    <InputGroup 
+                    <TextareaGroup  
                     name="title"
                     placeholder='Enter Titled'
                     value={title}
                     onChange={this.onChange}
                     error={errors.title}
                     /> 
-                    <InputGroup 
+                    <TextareaGroup  
                     name="body"
                     placeholder='Enter Post'
                     value={body}
@@ -58,6 +57,16 @@ class AddPost extends PureComponent {
             return;
         }
 
+        if (title.length > 100) {
+            this.setState({errors: { title: 'Title is to long'}});
+            return;
+        }
+
+        if (body.length > 200) {
+            this.setState({errors: { body: 'Post is to long'}});
+            return;
+        }
+
         const newPost = {
           title,
           body  
@@ -72,10 +81,6 @@ class AddPost extends PureComponent {
 
         this.props.history.push('/');
     }
-}
-
-AddPost.propTypes = {
-    addPost: PropTypes.func.isRequired
 }
 
 export default connect(null, { addPost })(AddPost);

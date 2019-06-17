@@ -1,9 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-
-const InputGroup = ({
+const TextareaGroup = ({
     name,
     error,
     value,
@@ -26,18 +24,8 @@ const InputGroup = ({
     )
 }
 
-InputGroup.propTypes = {
-    title: PropTypes.string.isRequired,
-    body: PropTypes.string.isRequired,
-    placeholder: PropTypes.string.isRequired,
-    value: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
-    onChange: PropTypes.func.isRequired,
-    error: PropTypes.string.isRequired
-}
-
-InputGroup.defaultProps = {
+TextareaGroup.defaultProps = {
     type: 'text'
 }
 
-export default InputGroup
+export default TextareaGroup 

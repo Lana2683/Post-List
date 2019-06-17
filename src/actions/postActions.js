@@ -3,7 +3,7 @@ import {
     ADD_POST, 
     DELETE_POST, 
     GET_POST, 
-    UPDATE_POST
+    UPDATE_POST,
 } from './types';
 import axios from 'axios';
 
@@ -53,4 +53,3 @@ export const updatePost = post => async dispatch => {
         payload: res.data
     });
 };
-
