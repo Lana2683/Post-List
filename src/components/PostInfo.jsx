@@ -57,6 +57,7 @@ class PostInfo extends PureComponent {
                             like: false
                         })}/>
             </span>
+            <hr/>
             <div className='comments'>
                 <span className='cmmnt'>
                     <p className='brand'>Comments:</p>

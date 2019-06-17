@@ -13,6 +13,7 @@ class Post extends PureComponent {
                         </Link>
                     </div>  
                     <p>{body}</p> 
+                    <hr/>
                     <i className={like ? 'enabled far fa-thumbs-up item' :
                          'far fa-thumbs-up item'} onClick={()=>onClickLike(id)}/>
                     <i className={dislike ? 'enabled far fa-thumbs-down item' :

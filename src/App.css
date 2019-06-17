@@ -181,3 +181,10 @@ main {
   display: flex;
   justify-content: space-between;
 }
+
+hr {
+  height: 1px;
+  color: #e2e3e5;
+  background-color: #e2e3e5;
+  border: none
+}
