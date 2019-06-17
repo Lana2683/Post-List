@@ -19,7 +19,7 @@ class EditPost extends PureComponent {
                 <form onSubmit={this.onSubmit}>
                     <TextareaGroup 
                     name="title"
-                    placeholder='Enter Titled'
+                    placeholder='Enter Title'
                     value={title}
                     onChange={this.onChange}
                     error={errors.title}
