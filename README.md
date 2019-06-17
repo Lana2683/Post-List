@@ -7,7 +7,7 @@ The react-redux based blog-emulating app that allows you to CRUD the posts and a
 
 ### Usage
 ```
-https://github.com/Lana2683/Post-List.git
+git clone https://github.com/Lana2683/Post-List.git
 cd Post-List
 npm install
 npm start
